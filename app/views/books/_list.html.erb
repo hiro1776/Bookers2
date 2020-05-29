@@ -1,5 +1,4 @@
     <% if book.errors.any? %>
-        <%=form_for(book) do |f| %>
 	       <div id ="error_explanation">
     	       <h2><%= pluralize(book.errors.count, "error") %>
             	prohibited this product from being saved:
@@ -10,7 +9,6 @@
                     <% end %>
                 </ul>
             </div>
-        <% end %>
     <% end %>
     <div class="col-xs-3">
         <h2>User info</h2>
@@ -46,9 +44,8 @@
  			<label for= "book_body">Opinion</label>
  			<%= f.text_area :body, class: "col-xs-12" %>
  		 </div>
- 		 <div class="actions row">
+ 		     <div class="actions row">
  			<%= f.submit "Create Book", class:"btn btn-primary col-xs-12" %>
-
- 		 </div>
+ 		     </div>
         <% end %>
     </div>

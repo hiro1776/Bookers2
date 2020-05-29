@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
   	@user = User.find(params[:id])
+    @users = User.all
   	@book = Book.new
   	@books = @user.books
   end
@@ -8,6 +9,7 @@ class UsersController < ApplicationController
   	@users = User.all
   	@user = current_user
   	@book = Book.new
+    @books = @user.books
   	@profile_image = ProfileImage.new
   end
 

@@ -1,23 +1,23 @@
 class BooksController < ApplicationController
-	 before_action :authenticate_user!,only:[:edit,:destroy]
+	 
   def index
     @users = User.all
     @user = current_user
     @books= Book.all
     @book = Book.new
-    @profile_image = ProfileImage.new
   end
 
   def show
     @book = Book.find(params[:id])
     @user = current_user
+    @books = Book.all
   end
 
   def edit
     @book= Book.find(params[:id])
   end
   def destroy
-    book = Book.find(params[:id])
+    @book = Book.find(params[:id])
       if @book.destroy
         flash[:notice] = ""
         redirect_to books_path
@@ -31,6 +31,7 @@ class BooksController < ApplicationController
         redirect_to book_path(@book.id)
       else
         @books= Book.all
+        @user= current_user
         render 'index'
       end
   end
